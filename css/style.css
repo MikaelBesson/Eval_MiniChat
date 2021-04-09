@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    background: rgb(36,219,135);
+    background: radial-gradient(circle, rgba(36,219,135,1) 19%,
+                rgba(68,5,106,0.6705621121197762) 77%);
+}
+#formcontain {
+    width: 70%;
+    min-height: 40vh;
+    background-color: white;
+    border-radius: 10%;
+    margin: 5rem auto;
+}
+
+form {
+    width: 80%;
+
+}
+
