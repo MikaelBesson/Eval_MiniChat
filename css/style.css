@@ -15,15 +15,30 @@ body {
                 rgba(68,5,106,0.6705621121197762) 77%);
 }
 #formcontain {
-    width: 70%;
-    min-height: 40vh;
+    max-width: 600px;
+    min-width: 300px;
     background-color: white;
     border-radius: 10%;
     margin: 5rem auto;
+    text-align: center;
+    box-shadow: inset 10px 10px 209px 29px rgba(140,204,222,0.58);
 }
 
-form {
-    width: 80%;
-
+form  div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    font-size: medium;
 }
+
+#lastMessage {
+    width: 60%;
+    height: 10rem;
+    background-color: papayawhip;
+    margin: 2rem auto;
+}
+
+
 

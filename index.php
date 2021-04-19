@@ -1,3 +1,7 @@
+<?php
+    require_once './bdd/verifuser.php';
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -13,15 +17,20 @@
         <h1>Bienvenue dans le chat !</h1>
 
         <form action="chat.php" method="post">
-            <label for="pseudo">Entre ton pseudo :</label>
-            <input type="text" name="pseudo">
-
-            <label for="password">Entre ton password :</label>
-            <input type="password" name="password">
-
-            <input type="submit">
-
-            <a href="inscription.php">Tu n'est pas encore inscrit ? Clique ici !</a>
+            <div>
+                <label for="pseudo">Entre ton pseudo :</label>
+                <input type="text" name="pseudo" id="pseudo" required>
+            </div>
+            <div>
+                <label for="password">Entre ton password :</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div>
+                <input type="submit">
+            </div>
+            <div>
+                <a href="inscription.php">Tu n'est pas encore inscrit ? Clique ici !</a>
+            </div>
 
         </form>
     </div>
