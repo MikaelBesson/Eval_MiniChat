@@ -1,67 +1,44 @@
 <?php
-    require_once './class/db.php';
-    require_once './class/user.php';
+require_once '../class/db.php';
+require_once '../class/user.php';
+require_once '../class/sanitize.php';
 
 
-    $db = new db;
-    $link = $db->getdbLink();
-    $user = new user($link);
-    $user->getUser();
-    if(isset($_GET['insertion'])){
-        $user->insertUser();
-    }
-
-/**
- * verifie les parametres vide return false
- * @param string ...$params
- * @return bool
- */
-function issetPostParams(string ...$params) : bool {
-    foreach($params as $param){
-        if(!isset($_POST[$param])) {
-            return false;
-        }
-    }
-    return true;
+$db = new db;
+$link = $db->getdbLink();
+$user = new user($link);
+$user->getUsers();
+if (isset($_GET['insertion'])) {
+    $user->insertUser();
 }
 
-    //nettoyage des inputs
-    /**
-     * assainit le contenu d'une varaible
-     * @param $data
-     * @return string
-     */
-    function sanitize($data) : string {
-        //supprime les espaces
-        $data = trim($data);
-        //supprime les antislash
-        $data = stripslashes($data);
-        //transforme les caracteres speciaux en HTML
-        $data = htmlspecialchars($data);
-        //ajoute des slashes pour eviter les chaine de caractere dans les formulaires
-        $data = addslashes($data);
-        return $data;
-    }
+$isset = new sanitize();
 
-if(issetPostParams('pseudo','password')) {
-    $pseudo = sanitize($_POST['pseudo']);
-    $password = sanitize($_POST['password']);
+if ($isset->issetPostParams('pseudo', 'password')) {
+    $verif = new sanitize();
+    $pseudo = $verif->verifInput($_POST['pseudo']);
+    $password = $verif->verifInput($_POST['password']);
 
 
     $request = $link->prepare('
         SELECT pseudo, password FROM user WHERE pseudo=:pseudo');
-    $request->bindValue(':pseudo',$pseudo);
+    $request->bindValue(':pseudo', $pseudo);
     $request->execute();
-    if($request->rowCount() === 0 ){
-        header('Location:inscription.php?error=usernotexist');
-    }
-    elseif($request->rowCount() > 0) {
+    if ($request->rowCount() === 0) {
+        header('Location:../index.php?error=usernotexist');
+    } elseif ($request->rowCount() > 0) {
         $data = $request->fetchAll();
-        if(password_verify($password, $data[0]['password'])){
-            header('Location:chat.php');
-        }
-        else{
-            header('Location:index.php?error=mdperror');
+        echo "<pre>";
+        print_r([
+            'clair' => $password,
+            'encoded' => $data[0]['password']
+        ]);
+        echo "</pre>";
+
+        if (password_verify($password, $data[0]['password'])) {
+            header('Location:../chat.php');
+        } else {
+            header('Location:../index.php?error=mdperror');
         }
     }
 }

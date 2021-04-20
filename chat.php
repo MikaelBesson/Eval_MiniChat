@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -12,7 +9,7 @@
     <title>Chat</title>
 </head>
 <body>
-    <div id="formcontain">
+    <div id="formcontainChat">
         <h1>Bienvenue dans le chat</h1>
         <div>
             <P id="user-connect">Connecté en tant que :</P>
@@ -21,10 +18,11 @@
             <p id="message-time">Dernier message a :</p>
         </div>
         <div>
-            <form action="chat.php" method="post">
+            <form action="" method="post">
                 <textarea name="user-message" id="user-message" cols="30" rows="5" placeholder="Tapez votre message ici..."></textarea><br>
                 <input type="submit">
-            </form>
+            </form><br>
+            <h3>Derniers messages</h3>
             <div id="lastMessage">
 
             </div>

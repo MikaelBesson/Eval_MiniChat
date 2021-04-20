@@ -1,13 +1,18 @@
 <?php
     require_once './class/db.php';
     require_once './class/user.php';
+    require_once './class/sanitize.php';
 
 
     $db = new db;
     $link = $db->getdbLink();
     $user = new user($link);
-    $user->getUser();
-    if(isset($_GET['insertion'])){
+    $user->getUsers();
+    $isset = new sanitize();
+
+
+
+    if($isset->issetPostParams('name','lastname','pseudo', 'password','confirm-password','email')){
         $user->insertUser();
     }
 ?>
@@ -25,7 +30,7 @@
 <body>
     <div id="formcontain">
         <h1>Inscription</h1>
-        <form action="./class/user.php" method="post">
+        <form action="" method="post">
             <div>
                 <label for="name">Entre ton Nom :</label>
                 <input type="text" name="name" id="name" required>
