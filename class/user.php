@@ -1,10 +1,6 @@
 <?php
 require_once 'sanitize.php';
 
-session_start([
-    'userfk' => "SELECT user_fk FROM messages"
-
-]);
 
 
 class user {
@@ -21,6 +17,7 @@ class user {
         $data->execute();
         foreach($data->fetchAll() as $datas){
             echo $datas['nom'] . '<br>' . $datas['prenom'] . '<br>';
+
         }
     }
 

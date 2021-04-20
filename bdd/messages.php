@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 class messages {
 
@@ -18,6 +18,7 @@ class messages {
                                         VALUES (:message, NOW(), :user_fk)");
 
         $request->bindvalue('message', $message);
+        $request->bindValue('user_fk',$_SESSION['user']['id']);
         $request->execute();
     }
 

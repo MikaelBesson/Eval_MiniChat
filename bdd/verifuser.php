@@ -2,7 +2,7 @@
 require_once '../class/db.php';
 require_once '../class/user.php';
 require_once '../class/sanitize.php';
-
+session_start();
 
 $db = new db;
 $link = $db->getdbLink();
@@ -28,6 +28,9 @@ if ($isset->issetPostParams('pseudo', 'password')) {
         header('Location:../index.php?error=usernotexist');
     } elseif ($request->rowCount() > 0) {
         $data = $request->fetchAll();
+        $_SESSION['user']['id']=$data['id'];
+        $_SESSION['user']['pseudo']=$data['pseudo'];
+
         echo "<pre>";
         print_r([
             'clair' => $password,
