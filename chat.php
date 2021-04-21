@@ -1,3 +1,13 @@
+
+
+
+
+
+
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -12,14 +22,14 @@
     <div id="formcontainChat">
         <h1>Bienvenue dans le chat</h1>
         <div>
-            <P id="user-connect">Connecté en tant que :</P>
+            <P id="user-connect">Connecté en tant que :<?= $_SESSION['user']['pseudo'] ?></P>
         </div>
         <div>
-            <p id="message-time">Dernier message a :</p>
+            <p id="message-time">Dernier message a :<?= ''?></p>
         </div>
         <div>
-            <form action="" method="post">
-                <textarea name="user-message" id="user-message" cols="30" rows="5" placeholder="Tapez votre message ici..."></textarea><br>
+            <form action="bdd/messages.php?action=ecrire" method="POST">
+                <textarea name="usermessage" id="usermessage" cols="30" rows="5" placeholder="Tapez votre message ici..."></textarea><br>
                 <input type="submit">
             </form><br>
             <h3>Derniers messages</h3>
@@ -29,5 +39,6 @@
         </div>
     </div>
 
+    <script src="appJS/script.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@ class db {
     private string $server ='localhost';
     private string $user = 'root';
     private string $password = '';
-    private string $db = 'eval_mini_chat';
+    private string $db = 'minichat';
     private ?PDO $dbLink;
 
     //__const et tab
