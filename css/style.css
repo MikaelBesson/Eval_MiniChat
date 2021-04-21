@@ -44,11 +44,13 @@ form  div {
 }
 
 #lastMessage {
+    font-size: 17px;
     border: 2px solid brown;
     width: 60%;
     height: 25rem;
     background-color: papayawhip;
     margin: 2rem auto;
+    overflow-y: auto;
 }
 
 

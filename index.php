@@ -1,3 +1,10 @@
+<?php
+    if(isset($_GET['deconnection']) && $_GET['deconnection'] === '1' ) {
+        session_unset();
+    }
+?>
+
+
 <!doctype html>
 <html lang="fr">
 <head>

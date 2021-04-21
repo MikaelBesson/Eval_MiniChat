@@ -41,5 +41,6 @@ class user {
         $request->bindValue(':password',password_hash($pass,PASSWORD_DEFAULT));
         $request->bindValue(':email',$email);
         $request->execute();
+        header('Location:index.php');
     }
 }

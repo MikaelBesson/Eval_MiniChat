@@ -17,18 +17,14 @@ if ($action === 'ecrire') {
 function insertMessage(){
     if(isset($_POST['usermessage'])){
         $message = $_POST['usermessage'];
-    }
-    else{
-        $message = 'error';
-    }
-
-    $db = new db();
-    $request = $db->getdbLink();
-    $result = $request->prepare("INSERT INTO messages (message, date, user_fk)
+        $db = new db();
+        $request = $db->getdbLink();
+        $result = $request->prepare("INSERT INTO messages (message, date, user_fk)
                                         VALUES (:message, NOW(), :user_fk)");
-    $result->bindvalue(':message', $message);
-    $result->bindValue(':user_fk', $_SESSION['user']['id']);
-    $result->execute();
+        $result->bindvalue(':message', $message);
+        $result->bindValue(':user_fk', $_SESSION['user']['id']);
+        $result->execute();
+    }
 }
 
 function getMessages(){

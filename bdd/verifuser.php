@@ -19,7 +19,6 @@ if ($isset->issetPostParams('pseudo', 'password')) {
     $pseudo = $verif->verifInput($_POST['pseudo']);
     $password = $verif->verifInput($_POST['password']);
 
-
     $request = $link->prepare('
         SELECT id, pseudo, password FROM user WHERE pseudo=:pseudo');
     $request->bindValue(':pseudo', $pseudo);

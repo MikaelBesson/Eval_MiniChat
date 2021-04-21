@@ -25,18 +25,14 @@
             <P id="user-connect">Connecté en tant que :<?= $_SESSION['user']['pseudo'] ?></P>
         </div>
         <div>
-            <p id="message-time">Dernier message a :<?= ''?></p>
-        </div>
-        <div>
             <form action="bdd/messages.php?action=ecrire" method="POST">
-                <textarea name="usermessage" id="usermessage" cols="30" rows="5" placeholder="Tapez votre message ici..."></textarea><br>
+                <textarea name="usermessage" id="usermessage" cols="30" rows="5" placeholder="Tapez votre message ici..." required></textarea><br>
                 <input type="submit">
             </form><br>
             <h3>Derniers messages</h3>
-            <div id="lastMessage">
-
-            </div>
+            <div id="lastMessage"></div>
         </div>
+            <a href="index.php?deconnection=1">deconnection</a>
     </div>
 
     <script src="appJS/script.js"></script>
