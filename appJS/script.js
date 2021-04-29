@@ -1,5 +1,6 @@
-
-
+/**
+ * function getMessage
+ */
 function getMessages(){
     const requeteAjax = new XMLHttpRequest();
     requeteAjax.open("GET", '../bdd/messages.php');
@@ -22,6 +23,10 @@ function getMessages(){
     requeteAjax.send();
 }
 
+/**
+ * function postMessage
+ * @param event
+ */
 function postMessage(event) {
     event.preventDefault();
 

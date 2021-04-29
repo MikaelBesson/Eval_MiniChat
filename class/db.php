@@ -15,9 +15,12 @@ class db {
 
     function connect () : ?PDO {
         try {
-            $conn = new PDO("mysql:host=$this->server;dbname=$this->db;charset=utf8", $this->user, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $conn = new PDO("mysql:host=$this->server;dbname=$this->db
+            ;charset=utf8", $this->user, $this->password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE,
+                PDO::ERRMODE_EXCEPTION);
+            $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,
+                PDO::FETCH_ASSOC);
             return $conn;
         }
         catch(PDOException $exception) {

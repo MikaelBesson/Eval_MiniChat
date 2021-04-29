@@ -3,7 +3,8 @@
 
 class sanitize {
 
-    //nettoyage des inputs
+    // nettoyage des inputs
+    // cleaning of inputs
     /**
      * assainit le contenu d'une variable
      * @param $data
@@ -16,12 +17,13 @@ class sanitize {
         $data = stripslashes($data);
         //transforme les caracteres speciaux en HTML
         $data = htmlspecialchars($data);
-        //ajoute des slashes pour eviter les chaine de caractere dans les formulaires
+        //ajoute des slashes pour eviter les chaine
+        // de caractere dans les formulaires
         $data = addslashes($data);
         return $data;
-
     }
-
+    // verifie les parametres si ils sont vide retourne false
+    // check the parameters if they are empty returns false
     /**
      * verifie les parametres vide return false
      * @param string ...$params
